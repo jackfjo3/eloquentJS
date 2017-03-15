@@ -73,7 +73,7 @@ for (var columnNum = 1; columnNum <= size; columnNum++) {
       countCircle++;
     }
     else {
-      row = row + '#';
+      row = row +g '#';
       countHash++;
     }
   }
@@ -85,7 +85,7 @@ for (var columnNum = 1; columnNum <= size; columnNum++) {
 
 var size = 8, board = "";
 
-
+//each square is identified with (x,y) coordinates. The even-ness or odd-ness of the sum of x and y coordinate values determines whether it is # or o
 for (var y = 1; y <= size; y++) {
   for (var x = 1; x < size; x++) {
     if ((x+y)%2 === 0) {
@@ -95,7 +95,7 @@ for (var y = 1; y <= size; y++) {
       board += '#';
     }
   }
-  board += "\n";
+  board += "\n"; //each row is ended with a new line, which adds one to the y values for all squares in next row
 }
 
 console.log(board);
