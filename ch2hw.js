@@ -61,7 +61,7 @@ When you have a program that generates this pattern, define a variable size = 8 
 
 */
 
-//almost works... still needs to alternate # and o at the start of each line
+/*almost worked... still needs to alternate # and o at the start of each line
 
 var size = 8, row = "", countHash = 0, countCircle = 0;
 
@@ -80,9 +80,8 @@ for (var columnNum = 1; columnNum <= size; columnNum++) {
   console.log(row)
 }
 
-
+*/
 //second attempt
-
 
 var size = 8, board = "";
 
@@ -91,12 +90,12 @@ for (var y = 1; y <= size; y++) {
   for (var x = 1; x < size; x++) {
     if ((x+y)%2 === 0) {
       board += 'o';
-      x++;
     }
     else {
       board += '#';
-      y++;
     }
   }
-  board += "/n";
-};
+  board += "\n";
+}
+
+console.log(board);
