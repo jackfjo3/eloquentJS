@@ -83,16 +83,33 @@ Next, write a function called countChar that behaves like countBs, except it tak
 //this code still doesnt work... reports 0 Bs
 
 var countBs = function(textB) {
+  
   var numberOfBs = 0;
-  for (N=0; N==textB.length - 1; N++;) {
-    if (textB.charAt(N) == 'B') {
+  
+  for (N = 0; N < textB.length; N++) {
+    if (textB.charAt(N) === 'B') {
       numberOfBs++;
     }
-  return numberOfBs;
   }
+  
+  return numberOfBs;
+
 }
+
+
+function countChar(textMatch, match) {
+  var numberOfMatches = 0;
+  for (N = 0; N < textMatch.length; N++) {
+    if (textMatch.charAt(N) === match) {
+      numberOfMatches++;
+    }
+  }
+  
+  return numberOfMatches;
+ 
+}
+
 console.log(countBs("BBC"));
 // → 2
 console.log(countChar("kakkerlak", "k"));
 // → 4
-// → ??
