@@ -13,14 +13,12 @@ As a bonus assignment, modify your range function to take an optional third argu
 
 // Your code here.
 
-// works for undefined stepSize (defaults to 1). Doesn't work with negative stepsizes yet...
-
 function range(start, end, stepSize) {
   var rangeArray = []; 
-  var rangeLength = end - start;
+  var rangeLength = Math.abs(end - start); // absolute value to account for a start value > end value
   var nextElement = start;
   
-  if (stepSize == undefined) {stepSize = 1};
+  if (stepSize == undefined) {stepSize = 1;}
   
   for (i = 0; i <= rangeLength; i++) {
     rangeArray[i] = nextElement;
@@ -30,6 +28,13 @@ function range(start, end, stepSize) {
   return rangeArray;
 }
 
+function sum(rangeArray) {//this argument rangeArray should be outside the scope of variable of same name in range function. I don't expect an issue.
+  var total = 0;
+  for (i = 0; i < rangeArray.length; i++) {
+    total += rangeArray[i];
+  }
+  return total;
+}
 console.log(range(1, 10));
 // → [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 console.log(range(5, 2, -1));
