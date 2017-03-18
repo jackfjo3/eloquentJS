@@ -1,6 +1,11 @@
+Assignments for Chapter 4
+
+http://eloquentjavascript.net/04_data.html
+
 Exercises
 
 **Exercise 1**
+
 The sum of a range
 
 The introduction of this book alluded to the following as a nice way to compute the sum of a range of numbers:
@@ -22,6 +27,7 @@ Thinking back to the notes about side effects and pure functions in the previous
 
 
 **Exercise 3**
+
 A list
 
 Objects, as generic blobs of values, can be used to build all sorts of data structures. A common data structure is the list (not to be confused with the array). A list is a nested set of objects, with the first object holding a reference to the second, the second to the third, and so on.
