@@ -31,6 +31,31 @@ function listToArray(list) {
   
 }
 
+
+function prepend(element, list) {
+  prependedList = {value: element, rest: list};
+  return prependedList;
+}
+
+function nthNoRecursion(list, position) {
+  var listPosition = list;
+  // when index === 0, we are at the relevent element in a list
+  for (var index = position; index > 0; index--) {
+    listPosition = listPosition.rest;
+  }
+  return listPosition.value;
+}
+
+function nth(list, position) {
+  if (position === 0) {
+    return list.value;
+    }
+  else {
+    return nth(list.rest, position-1);
+  }
+}
+
+
 console.log(arrayToList([10, 20]));
 // → {value: 10, rest: {value: 20, rest: null}}
 console.log(listToArray(arrayToList([10, 20, 30])));
