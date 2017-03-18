@@ -22,6 +22,20 @@ function arrayToList(array) {
 
 
 function listToArray(list) {
-  return list;
+  array = []; // initialize array to build and to ultimately return
+  for (var node = list; node.value; node = node.rest) { //  node is initiallized at the list object that was fed in as an argument to the function listToArray(); the loop will continue as long as the list object has a value (loop will stop at the last rest: value because it's value is null (false) and kill loop; after each iteration, node is set to one branch deeper into the list object. (I bet this explanation is technically wrong in 10 ways but this is how I currently understand it)
+     array.push(node.value);
+  }
+  
+  return array;
   
 }
+
+console.log(arrayToList([10, 20]));
+// → {value: 10, rest: {value: 20, rest: null}}
+console.log(listToArray(arrayToList([10, 20, 30])));
+// → [10, 20, 30]
+console.log(prepend(10, prepend(20, null)));
+// → {value: 10, rest: {value: 20, rest: null}}
+console.log(nth(arrayToList([10, 20, 30]), 1));
+// → 20
