@@ -1,3 +1,3 @@
-Currently working through Marijn Haverbeke's Eloquent JavaScript. I am saving my work on all assignments here.
+Currently working through Marijn Haverbeke's Eloquent JavaScript.
 
 http://eloquentjavascript.net/

@@ -2,8 +2,6 @@ Assignments for Chapter 4
 
 http://eloquentjavascript.net/04_data.html
 
-Exercises
-
 **Exercise 1**
 
 The sum of a range
