@@ -1,17 +1,37 @@
-// one lingering concern is whether this will catch the difference between thing1 and thing2 if thing2 has all the same name:value pairs as thing1 PLUS additional name:value elements. You could have this funciton rerun itself with thing1 and thing2 swapped in the argument positions to double check this. There are likely ways to further reduce redundancies in this double-check strategy 
+// Your code here.
 
 function deepEqual(thing1, thing2) {
-  // if the two things are equal values, than they are the simplest example of deeply equal
+  // if the two things are simply equal values, than they are the simplest example of deeply equal
+  // PROBLEM HERE. THIS LINE ENDS THE FUNCTION AS SOON AS A NON-OBJECT MATCH IS IDENTIFIED WITHOUT CHECKING THE REST OF THE PROPERTIES IN THING1
   if (thing1 === thing2) {
-    return true;
+    return true; //BAD CODE. EXITS FUNCTION PREMATURELY
   }
-  // otherwise, check if both things are objects (and also not null which is technically an object type)
+  // otherwise, check if both things are objects (and also not null which is technically still object type)
   else if (typeof thing1 === 'object' && typeof thing2 === typeof thing1 && typeof thing1 !== null ) {
-    // check thing1 for a property and name if nextProperty
-    for (var nextProperty in thing1) {
-      // if thing 2 has the same property, check the deep-equality of the properties.
-      if (nextProperty in thing2) {
-        return deepEqual(thing1[nextProperty], thing2[nextProperty]);
+    
+    // need to count to ensure both objects have the same number of properties
+    var numberThing1Properties = 0, numberThing2Properties = 0; // need to count to ensure both objects have the same number of properties
+    for (var properties in thing1) {
+      numberThing1Properties++;
+    }
+    for (var properties in thing2) {
+      numberThing2Properties++;
+    }
+    if (numberThing2Properties === numberThing1Properties) {
+    
+      // check thing1 for a property and name if nextProperty
+    
+      for (var nextProperty in thing1) {
+
+      
+        // if thing 2 has the same property, check the deep-equality of the properties.
+     
+        if (nextProperty in thing2) {
+        
+          return deepEqual(thing1[nextProperty], thing2[nextProperty]);
+      
+        }
+    
       }
     }
   }
@@ -29,3 +49,12 @@ console.log(deepEqual(obj, {here: 1, object: 2}));
 // → false
 console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
 // → true
+
+console.log(deepEqual(obj, {here: {is: "an"}, object: 3000}));
+// -> false
+
+
+console.log(deepEqual(obj, {here: {is: "an"}, object: 2, extraProp: 'extraValue'}));
+// -> false FAILS!!! Returns undefined
+
+
