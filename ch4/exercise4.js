@@ -51,7 +51,7 @@ console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
 // → true
 
 console.log(deepEqual(obj, {here: {is: "an"}, object: 3000}));
-// -> false
+// -> false FAILS returns true
 
 
 console.log(deepEqual(obj, {here: {is: "an"}, object: 2, extraProp: 'extraValue'}));
