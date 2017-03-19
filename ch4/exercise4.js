@@ -1,10 +1,12 @@
 // Your code here.
 
+// if I were to refactor, rather than checking for things to be true, I would check for things not to be false, and terminate the program immediagely. For example in the ex4solution line 15 we have     if (!(prop in a) || !deepEqual(a[prop], b[prop])) return false;     This is in contrast to line 36 of this file, which checks whether ALL my desired conditions are true. I'd rather check whether ANY of my failing conditions are true and kill the program right off there.
+// Also, unlike the shorter solution shown in ex4solution.js, this deepEqual compares the amount of properties in each argument BEFORE comparing any of the values of those properties. I don't know enough at this point, but I would assume quickly assessing the total number of properties and then killing the process immediately if they don't match would be more efficient than determining there are extra additional properties in thing2 only AFTER you've already compared all the values... I can't say I was designing for efficiency this is looking back in hindsight
+
 function deepEqual(thing1, thing2) {
   // if the two things are simply equal values, than they are the simplest example of deeply equal
-  // PROBLEM HERE. THIS LINE ENDS THE FUNCTION AS SOON AS A NON-OBJECT MATCH IS IDENTIFIED WITHOUT CHECKING THE REST OF THE PROPERTIES IN THING1
   if (thing1 === thing2) {
-    return true; //BAD CODE. EXITS FUNCTION PREMATURELY
+    return true; 
   }
   // otherwise, check if both things are objects (and also not null which is technically still object type)
   else if (typeof thing1 === 'object' && typeof thing2 === typeof thing1 && typeof thing1 !== null ) {
@@ -29,17 +31,19 @@ function deepEqual(thing1, thing2) {
       for (var nextProperty in thing1) {
 
       
-        // if thing2 has the same property, check the deep-equality of the properties.
+        // if thing2 has the same property, check the deep-equality of the properties. Skip this step and terminate if the last step rendered thingsStillSeemEqual false
      
-        if (nextProperty in thing2) {
+        if (nextProperty in thing2 && thingsStillSeemEqual) {
         
           thingsStillSeemEqual = thingsStillSeemEqual && deepEqual(thing1[nextProperty],thing2[nextProperty]);
       
         }
+        // if thing 2 does NOT have the same property or the last property had a different value
         else return false;
     
       }
-      return thingsStillSeemEqual;
+      // after looping through all of the properties of thing1, if no differences in values were found, this will return true
+      return thingsStillSeemEqual; // I'm very happy with this variable name
     }
   }
   // if something is not the same, they are not deeply equal
