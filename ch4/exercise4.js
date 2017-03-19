@@ -20,19 +20,23 @@ function deepEqual(thing1, thing2) {
     if (numberThing2Properties === numberThing1Properties) {
     
       // check thing1 for a property and name if nextProperty
-      var tracker = true;
+    
       for (var nextProperty in thing1) {
 
+      
         // if thing 2 has the same property, check the deep-equality of the properties.
      
         if (nextProperty in thing2) {
-
-          tracker = tracker && deepEqual(thing1[nextProperty], thing2[nextProperty]);
-
+        
+          return deepEqual(thing1[nextProperty], thing2[nextProperty]);
+          
+          // KYLE: What if we did the following instead:
+          // var returnedValue = deepEqual(thing1[nextProperty], thing2[nextProperty]);
+          // - What would returnedValue be?
+      
         }
     
       }
-      return tracker;
     }
   }
   // if something is not the same, they are not deeply equal
