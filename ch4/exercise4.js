@@ -29,10 +29,6 @@ function deepEqual(thing1, thing2) {
         if (nextProperty in thing2) {
         
           return deepEqual(thing1[nextProperty], thing2[nextProperty]);
-          
-          // KYLE: What if we did the following instead:
-          // var returnedValue = deepEqual(thing1[nextProperty], thing2[nextProperty]);
-          // - What would returnedValue be?
       
         }
     
