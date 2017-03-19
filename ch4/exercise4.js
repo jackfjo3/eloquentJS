@@ -9,6 +9,7 @@ function deepEqual(thing1, thing2) {
   // otherwise, check if both things are objects (and also not null which is technically still object type)
   else if (typeof thing1 === 'object' && typeof thing2 === typeof thing1 && typeof thing1 !== null ) {
     
+    
     // need to count to ensure both objects have the same number of properties
     var numberThing1Properties = 0, numberThing2Properties = 0; // need to count to ensure both objects have the same number of properties
     for (var properties in thing1) {
@@ -17,10 +18,14 @@ function deepEqual(thing1, thing2) {
     for (var properties in thing2) {
       numberThing2Properties++;
     }
-    if (numberThing2Properties === numberThing1Properties) {
-    
+
+
+
+    if (numberThing2Properties !== numberThing1Properties) {return false;}
+    else {
+      
+      var thingsStillSeemEqual = true;
       // check thing1 for a property and name if nextProperty
-    
       for (var nextProperty in thing1) {
 
       
@@ -28,11 +33,12 @@ function deepEqual(thing1, thing2) {
      
         if (nextProperty in thing2) {
         
-          return deepEqual(thing1[nextProperty], thing2[nextProperty]);
+          thingsStillSeemEqual = thingsStillSeemEqual && deepEqual(thing1[nextProperty],thing2[nextProperty]);
       
         }
     
       }
+      return thingsStillSeemEqual;
     }
   }
   // if something is not the same, they are not deeply equal
