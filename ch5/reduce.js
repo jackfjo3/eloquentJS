@@ -34,7 +34,7 @@ function myAverage(array) {
 
 console.log(myAverage(myArray));
 
-// just for practice i;ll make another average funciton and use mySum inside. I could NOT use myPlus again because that is within a separate function (myAverage) so this variable is out of scope
+// just for practice I'll make another average funciton and use mySum inside. I could NOT use myPlus again because that is within a separate function (myAverage) so this variable is out of scope
 
 function myNewAverage(array) {
   return myReduce(array, mySum) / array.length;
