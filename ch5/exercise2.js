@@ -9,3 +9,7 @@ ancestry.forEach(function(person){
   byName[person.name] = person;
 });
 
+var hasKnownMother = function(person) {
+  return person.mother in byName;
+};
+
