@@ -28,7 +28,7 @@ function myAverage(array) {
   function myPlus(a,b) {
     return a+b;
   }
-  // here we return the average by totalling the array and deviding by the array.length. We must use myPlus as the argument of myReduce here rather than simply adding the two values AS an argument because you cannot pass opperators in as arguments, only values (which include funtions)
+  // here we return the average by totalling the array and dividing by the array.length. We must use myPlus as the argument of myReduce here rather than simply adding the two values AS an argument because you cannot pass opperators in as arguments, only values (which include funtions)
   return myReduce(array,myPlus) / array.length;
 }
 
